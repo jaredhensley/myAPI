@@ -48,6 +48,8 @@ var skills = [
 
 module.exports = {
 
+  skillsLength: skills.length,
+
   getName: function (req, res) {
     return res.json(name)
   },

@@ -7,6 +7,7 @@ var app = express();
 var port = 9001;
 
 app.use(bodyParser.json(), cors());
+
 app.get('/name', mainCtrl.getName);
 app.get('/location', mainCtrl.getLocation);
 app.get('/hobbies', mainCtrl.getHobbies);

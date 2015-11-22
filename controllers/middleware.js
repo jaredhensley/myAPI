@@ -1,13 +1,15 @@
+var mainCtrl = require('./mainCtrl');
+var counter = 0;
+var count = 0;
+
 module.exports = {
 
   generateID: function (req, res, next) {
-
-    console.log('i am here fool');
-    console.log(skills);
-    var randomID = 5;
-    //figure this part out
+    var arrayLength = mainCtrl.skillsLength;
+    counter = arrayLength + 1 + count;
+    count++;
+    var randomID = counter;
     req.body.id = randomID;
-
     next();
 
   }
