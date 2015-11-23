@@ -14,6 +14,7 @@ app.get('/hobbies', mainCtrl.getHobbies);
 app.get('/occupations', mainCtrl.getOccupations);
 app.get('/occupations/latest', mainCtrl.getLatestOccupation);
 app.get('/skills', mainCtrl.getSkills);
+app.get('/secrets/:username/:pin', middleware.verifyuser, mainCtrl.getSecrets);
 
 app.put('/name', mainCtrl.changeName);
 app.put('/location', mainCtrl.updateLocation);

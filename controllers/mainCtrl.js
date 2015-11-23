@@ -27,6 +27,14 @@ var name = {
   name: 'Jared'
 };
 
+var users = [{
+
+  username: 'jared',
+  pin: 'ghostbuster4life',
+  secret: 'farts in pools'
+
+}];
+
 var skills = [
   {
     id: 1,
@@ -47,6 +55,8 @@ var skills = [
 ];
 
 module.exports = {
+
+  users: users,
 
   skillsLength: skills.length,
 
@@ -147,6 +157,11 @@ module.exports = {
   updateSkills: function (req, res) {
     skills.push(req.body);
     return res.json(skills);
+  },
+
+  getSecrets: function (req, res) {
+    console.log(req.body);
+    return res.json(users[0].secret);
   }
 
 }
