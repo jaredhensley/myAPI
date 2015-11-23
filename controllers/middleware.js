@@ -15,13 +15,14 @@ module.exports = {
 
   verifyuser: function (req, res, next) {
     var flag = false;
-    mainCtrl.users.forEach(function (value) {
+    mainCtrl.users.forEach(function (value, index) {
       for (prop in value) {
         if (prop === 'username' && value[prop] === req.params.username) {
           flag = true;
         }
         if (prop === 'pin' && value[prop] === req.params.pin) {
           flag = true;
+          req.index = index;
           break;
         }
         flag = false;

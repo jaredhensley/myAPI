@@ -161,7 +161,7 @@ module.exports = {
 
   getSecrets: function (req, res) {
     console.log(req.body);
-    return res.json(users[0].secret);
+    return res.json(users[req.index].secret);
   }
 
 }
