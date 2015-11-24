@@ -27,7 +27,7 @@ module.exports = {
         }
         flag = false;
       }
-      flag ? next() : console.log(33333, 'not authorized');
+      flag ? next() : res.end('not authorized');
     });
   }
 

@@ -1,6 +1,6 @@
 var occupations = {
 
-  occupations: ['finance dude', 'lab tech', 'box-office manager', 'physical therapy school withdrawer']
+  occupations: ['pooper', 'finance dude', 'lab tech', 'box-office manager', 'physical therapy school withdrawer']
 
 }
 
@@ -65,8 +65,6 @@ module.exports = {
   },
 
   changeName: function (req, res) {
-    console.log(req.body);
-    console.log('am i here', req);
     name.name = req.body.name;
     res.json(name);
 
@@ -84,6 +82,16 @@ module.exports = {
   },
 
   getOccupations: function (req, res) {
+    if (req.params.name) {
+      occupations.occupations.forEach(function (value, index) {
+        if (req.params.name === value) {
+          return res.json({
+            occupations: occupations.occupations[index]
+          });
+        }
+      })
+    }
+
     if (req.query.order === "desc") {
       return res.json({
         occupations: occupations.occupations.sort()
@@ -107,6 +115,16 @@ module.exports = {
   },
 
   getHobbies: function (req, res) {
+    if (req.params.name) {
+      hobbies.forEach(function (value, index) {
+        if (value.name === req.params.name) {
+          return res.json({
+            hobbies: hobbies[index]
+          })
+        }
+
+      })
+    }
     return res.json({
       hobbies: hobbies
     })
@@ -118,12 +136,20 @@ module.exports = {
   },
 
   updateOccupations: function (req, res) {
-    console.log(req.body);
     occupations.occupations.push(req.body.job);
     return res.json(occupations);
   },
 
   getSkills: function (req, res) {
+    if (req.params.name) {
+      skills.forEach(function (value, index) {
+        if (value.name === req.params.name) {
+          return res.json({
+            skills: skills[index]
+          });
+        }
+      });
+    }
 
     var intermediate = [];
     var beginner = [];
@@ -148,7 +174,6 @@ module.exports = {
     } else if (req.query.experience === "beginner") {
       return res.json(beginner);
     } else {
-      console.log('else');
       return res.json(skills);
     }
 
@@ -160,7 +185,6 @@ module.exports = {
   },
 
   getSecrets: function (req, res) {
-    console.log(req.body);
     return res.json(users[req.index].secret);
   }
 

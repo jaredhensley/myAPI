@@ -11,9 +11,12 @@ app.use(bodyParser.json(), cors());
 app.get('/name', mainCtrl.getName);
 app.get('/location', mainCtrl.getLocation);
 app.get('/hobbies', mainCtrl.getHobbies);
+app.get('/hobbies/:name', mainCtrl.getHobbies);
 app.get('/occupations', mainCtrl.getOccupations);
+app.get('/occupations/:name', mainCtrl.getOccupations);
 app.get('/occupations/latest', mainCtrl.getLatestOccupation);
 app.get('/skills', mainCtrl.getSkills);
+app.get('/skills/:name', mainCtrl.getSkills);
 app.get('/secrets/:username/:pin', middleware.verifyuser, mainCtrl.getSecrets);
 
 app.put('/name', mainCtrl.changeName);
